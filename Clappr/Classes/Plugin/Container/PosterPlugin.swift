@@ -30,7 +30,7 @@ open class PosterPlugin: UIContainerPlugin {
         }
         
         if let url = URL(string: urlString) {
-            //poster.kf_setImageWithURL(url)
+            poster.kf.setImage(with: url)
         } else {
             Logger.logWarn("invalid URL.", scope: pluginName)
         }
