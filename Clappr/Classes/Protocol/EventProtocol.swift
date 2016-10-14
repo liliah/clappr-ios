@@ -1,5 +1,7 @@
 public protocol EventProtocol {
+    @discardableResult
     func on(_ eventName:String, callback: @escaping EventCallback) -> String
+    @discardableResult
     func once(_ eventName:String, callback: @escaping EventCallback) -> String
     func off(_ listenId: String)
     

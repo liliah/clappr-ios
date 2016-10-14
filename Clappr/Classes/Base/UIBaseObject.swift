@@ -3,10 +3,12 @@ import Foundation
 open class UIBaseObject: UIView, EventProtocol {
     fileprivate let baseObject = BaseObject()
     
+    @discardableResult
     open func on(_ eventName:String, callback: @escaping EventCallback) -> String {
         return baseObject.on(eventName, callback: callback)
     }
     
+    @discardableResult
     open func once(_ eventName:String, callback: @escaping EventCallback) -> String {
         return baseObject.once(eventName, callback: callback)
     }
@@ -25,10 +27,12 @@ open class UIBaseObject: UIView, EventProtocol {
         Logger.logDebug("[\(eventName)] triggered with \(userInfo)", scope: logIdentifier())
     }
     
+    @discardableResult
     open func listenTo<T: EventProtocol>(_ contextObject: T, eventName: String, callback: @escaping EventCallback) -> String {
         return baseObject.listenTo(contextObject, eventName: eventName, callback: callback)
     }
 
+    @discardableResult
     open func listenToOnce<T : EventProtocol>(_ contextObject: T, eventName: String, callback: @escaping EventCallback) -> String {
         return baseObject.listenToOnce(contextObject, eventName: eventName, callback: callback)
     }

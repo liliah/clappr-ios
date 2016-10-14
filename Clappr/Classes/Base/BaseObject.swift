@@ -16,6 +16,7 @@ open class BaseObject: NSObject, EventProtocol {
     fileprivate var events = [String: Event]()
     fileprivate var onceEventsHashes = [String]()
     
+    @discardableResult
     open func on(_ eventName: String, callback: @escaping EventCallback) -> String {
         return on(eventName, callback: callback, contextObject: self)
     }
@@ -44,6 +45,7 @@ open class BaseObject: NSObject, EventProtocol {
         }
     }
     
+    @discardableResult
     open func once(_ eventName: String, callback: @escaping EventCallback) -> String {
         return once(eventName, callback: callback, contextObject: self)
     }
@@ -76,10 +78,12 @@ open class BaseObject: NSObject, EventProtocol {
         }
     }
     
+    @discardableResult
     open func listenTo<T : EventProtocol>(_ contextObject: T, eventName: String, callback: @escaping EventCallback) -> String {
         return on(eventName, callback: callback, contextObject: contextObject.getEventContextObject())
     }
 
+    @discardableResult
     open func listenToOnce<T : EventProtocol>(_ contextObject: T, eventName: String, callback: @escaping EventCallback) -> String {
         return once(eventName, callback: callback, contextObject: contextObject.getEventContextObject())
     }

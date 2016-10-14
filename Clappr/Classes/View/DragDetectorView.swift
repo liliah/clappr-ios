@@ -19,14 +19,14 @@ open class DragDetectorView: UIView {
     open fileprivate(set) var currentTouch: UITouch?
 
     open var target: AnyObject?
-
+    
     open var selector: Selector!
 
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             touchState = .began
             currentTouch = touch
-            target?.perform(selector, with: self)
+            _ = target?.perform(selector, with: self)
         }
     }
 
@@ -34,7 +34,7 @@ open class DragDetectorView: UIView {
         if let touch = touches.first {
             touchState = .moved
             currentTouch = touch
-            target?.perform(selector, with: self)
+            _ = target?.perform(selector, with: self)
         }
     }
 
@@ -42,7 +42,7 @@ open class DragDetectorView: UIView {
         if let touch = touches.first {
             touchState = .ended
             currentTouch = touch
-            target?.perform(selector, with: self)
+            _ = target?.perform(selector, with: self)
         }
     }
 
@@ -50,7 +50,7 @@ open class DragDetectorView: UIView {
         if let touch = touches.first {
             touchState = .canceled
             currentTouch = touch
-            target?.perform(selector, with: self)
+            _ = target?.perform(selector, with: self)
         }
     }
 }
