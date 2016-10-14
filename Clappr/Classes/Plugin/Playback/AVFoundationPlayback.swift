@@ -1,24 +1,4 @@
 import AVFoundation
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 
 enum PlaybackState {
     case idle, paused, playing, buffering
@@ -82,7 +62,7 @@ open class AVFoundationPlayback: Playback {
     }
 
     open override var isPlaying: Bool {
-        return player != nil && player?.rate > 0
+        return player != nil && player!.rate > Float(0)
     }
 
     open override var isPaused: Bool {
